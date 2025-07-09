@@ -1,0 +1,2 @@
+
+Simple view components rendering pages with out any logic to them.
