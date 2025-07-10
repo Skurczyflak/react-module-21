@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { getTableById } from "../../../redux/tablesRedux";
 import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-import { updateTable } from "../../../redux/tablesRedux";
+import { updateTablesRequest } from "../../../redux/tablesRedux";
 const UpdateTableForm = () => {
     
     const { tableId } = useParams();
@@ -13,7 +13,12 @@ const UpdateTableForm = () => {
     const navigate = useNavigate();
 
     const handleSubmit = table => {
-        dispatch(updateTable(table));
+        if(table.status === 'free' || table.status === 'cleaning') {
+          table.booked = '';
+          table.capacity = '';
+          table.bill = '';
+        }
+        dispatch(updateTablesRequest(table));
         navigate('/');
     } 
 

@@ -6,7 +6,8 @@ const HomePage = () => {
 
   const tables = useSelector(getAllTables)
 
-  return (
+  if(tables.length === 0) return <h2>Loading...</h2>;
+  else return (
     <>
       <h2>All tables</h2>
       <Tables tables={tables} />

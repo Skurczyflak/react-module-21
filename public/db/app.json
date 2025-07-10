@@ -4,25 +4,41 @@
       "id": "1",
       "tableNumber": "1",
       "status": "free",
-      "booked": "",
       "capacity": "",
+      "booked": "",
       "bill": ""
     },
     {
       "id": "2",
       "tableNumber": "2",
-      "status": "busy",
-      "booked": "2",
+      "status": "cleaning",
       "capacity": "4",
+      "booked": "2",
       "bill": "20"
     },
     {
       "id": "3",
       "tableNumber": "3",
-      "status": "reserved",
-      "booked": "2",
-      "capacity": "4",
+      "status": "busy",
+      "capacity": "3",
+      "booked": "1",
       "bill": "40"
+    },
+    {
+      "id": "4",
+      "tableNumber": "4",
+      "status": "cleaning",
+      "capacity": "4",
+      "booked": "3",
+      "bill": "20"
+    },
+    {
+      "id": "5",
+      "tableNumber": "5",
+      "status": "busy",
+      "capacity": "5",
+      "booked": "3",
+      "bill": "5"
     }
   ],
   "statuses": [
@@ -42,6 +58,5 @@
       "id": "4",
       "name": "cleaning"
     }
-
   ]
 }

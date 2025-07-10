@@ -1,5 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
+import { fetchTables  } from './redux/tablesRedux';
+import { fetchStatuses } from './redux/statusesRedux';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 
 import HomePage from "./components/pages/HomePage/HomePage";
 import NotFound from "./components/pages/NotFound/NotFound";
@@ -9,6 +13,14 @@ import UpdateTableForm from './components/features/UpdateTableForm/UpdateTableFo
 import Tables from './components/pages/Tables/Tables';
 
 function App() {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchTables());
+    dispatch(fetchStatuses());
+  }, [dispatch]);
+
   return (
 <Container>
     <Header />
