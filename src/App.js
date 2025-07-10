@@ -27,7 +27,6 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/table/:tableId" element={<UpdateTableForm />} />
-      <Route path="/table/edit/:tableId" element={<Tables />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
     <Footer />

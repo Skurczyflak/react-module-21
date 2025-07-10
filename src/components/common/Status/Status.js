@@ -8,7 +8,7 @@ const Status = ({status, setStatus, statuses}) => {
             <Form.Label column className='col-2'>
                 <strong>Status:</strong>
             </Form.Label>
-            <Col sm={4} className='p-0 w-auto' >
+            <Col sm={4} className='p-0' >
                 <Form.Select aria-label="Status" value={status} onChange={(e) => setStatus(e.target.value)}>
                     {statuses.map((status) =>(
                         <option key={status.id} value={status.name}>

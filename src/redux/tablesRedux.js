@@ -1,4 +1,6 @@
 
+import { API_URL } from '../config';
+
 // actions
 const createActionName = actionName => `app/tables/${actionName}`;
 const UPDATE_TABLE = createActionName('UPDATE_TABLE');
@@ -34,7 +36,7 @@ export const updateTablesRequest = (table) => {
         ...table
       })
     };
-    fetch(`http://localhost:3131/api/tables/${table.id}`, options)
+    fetch(`${API_URL}/tables/${table.id}`, options)
     .then(() => dispatch(updateTable(table)));
   }
 }
