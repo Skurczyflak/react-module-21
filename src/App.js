@@ -10,7 +10,6 @@ import NotFound from "./components/pages/NotFound/NotFound";
 import Header from './components/views/Header/Header';
 import Footer from './components/views/Footer/Footer';
 import UpdateTableForm from './components/features/UpdateTableForm/UpdateTableForm';
-import Tables from './components/pages/Tables/Tables';
 
 function App() {
 
