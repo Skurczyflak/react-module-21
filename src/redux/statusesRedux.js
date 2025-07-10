@@ -3,7 +3,7 @@
 //const createActionName = actionName => `app/statuses/${actionName}`;
 
 //selectors
-export const getAllTables = ({statuses}) => statuses;
+export const getAllStatuses = ({statuses}) => statuses;
 
 // action creators
 

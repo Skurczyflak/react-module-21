@@ -1,26 +1,27 @@
 
 // actions
 const createActionName = actionName => `app/tables/${actionName}`;
-const DELETE_TABLE = createActionName('DELETE_TABLE');
-const ADD_TABLE = createActionName('ADD_TABLE');
-const EDIT_TABLE = createActionName('EDIT_TABLE');
+const UPDATE_TABLE = createActionName('UPDATE_TABLE');
 //selectors
 export const getAllTables = ({tables}) => tables;
 export const getTableById = ({tables}, id) => tables.find(table => table.id === id);
 
 // action creators
-export const deleteTable = (payload) => ({ type: DELETE_TABLE, payload });
-export const addTable = (payload) => ({type: ADD_TABLE, payload});
-export const editTable = (payload) =>({type: EDIT_TABLE, payload});
+export const updateTable = (payload) => ({ type: UPDATE_TABLE, payload });
 
 const tablesReducer = (statePart = [], action) => {
   switch (action.type) {
-    // case ADD_POST:
-    //     return [...statePart, { ...action.payload }];
-    // case DELETE_POST:
-    //     return statePart.filter(post => post.id !== action.payload);
-    // case EDIT_POST:
-    //     return statePart.map(post => (post.id === action.payload.id ? { ...post, ...action.payload } : post));
+    case UPDATE_TABLE:
+        return statePart.map(table => {
+          if (table.id === action.payload.id) {
+            const updatedTable = { ...table, ...action.payload };
+            if (updatedTable.status === 'free' || updatedTable.status === 'cleaning') {
+              return { ...updatedTable, booked: '', capacity: '', bill: '' };
+            }
+            return updatedTable;
+          }
+          return table;
+        });
     default:
       return statePart;
   };

@@ -2,42 +2,45 @@ const initialState = {
   tables: [
     {
       id: '1',
-      statusId: '3',
+      tableNumber: '1',
+      status: 'free',
+      booked: '',
+      capacity: '',
+      bill: '',
+    },
+    {
+      id: '2',
+      tableNumber: '2',
+      status: 'busy',
       booked: '2',
       capacity: '4',
       bill: '20',
     },
     {
-      id: '1',
-      statusId: '2',
+      id: '3',
+      tableNumber: '3',
+      status: 'reserved',
       booked: '2',
       capacity: '4',
-      bill: '20',
-    },
-    {
-      id: '1',
-      statusId: '1',
-      booked: '2',
-      capacity: '4',
-      bill: '20',
+      bill: '40',
     },
   ],
   statuses: [
     {
       id: '1',
-      name: 'Free',
+      name: 'free',
     },
     {
       id: '2',
-      name: 'Busy',
+      name: 'busy',
     },
     {
       id: '3',
-      name: 'Reserved',
+      name: 'reserved',
     },
     {
       id: '4',
-      name: 'Clenning',
+      name: 'cleaning',
     }
 
   ]
