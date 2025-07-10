@@ -1,5 +1,5 @@
 
-import { API_URL } from '../config';
+import { API_URL, useAppJson } from '../config';
 
 // actions
 const createActionName = actionName => `app/statuses/${actionName}`;
@@ -14,9 +14,15 @@ export const updatedStatuses = (payload) => ({ type: UPDATE_STATUSES, payload })
 //fetch data
 export const fetchStatuses = () => {
   return (dispatch) => {
+  if(useAppJson){
+    fetch('db/app.json')
+    .then(res => res.json())
+    .then(data => dispatch(updatedStatuses(data.statuses)));
+  }else{
     fetch(`${API_URL}/statuses`)
     .then(res => res.json())
     .then(statuses => dispatch(updatedStatuses(statuses)));
+  }
   }
   };
 

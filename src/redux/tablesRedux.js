@@ -1,5 +1,5 @@
 
-import { API_URL } from '../config';
+import { API_URL, useAppJson } from '../config';
 
 // actions
 const createActionName = actionName => `app/tables/${actionName}`;
@@ -15,11 +15,18 @@ export const updateTable = (payload) => ({ type: UPDATE_TABLE, payload });
 export const updateTables = (payload) => ({ type: UPDATE_TABLES, payload });
 
 //fetch data
-export const fetchTables = () =>{
+export const fetchTables = () => {
   return (dispatch) => {
-  fetch('http://localhost:3131/api/tables')
+  if(useAppJson){
+    fetch('db/app.json')
+    .then(res => res.json())
+    .then(data => dispatch(updateTables(data.tables)));
+    
+  }else{
+    fetch(`${API_URL}/tables`)
     .then(res => res.json())
     .then(tables => dispatch(updateTables(tables)));
+  }
   }
 };
 
@@ -36,8 +43,14 @@ export const updateTablesRequest = (table) => {
         ...table
       })
     };
-    fetch(`${API_URL}/tables/${table.id}`, options)
-    .then(() => dispatch(updateTable(table)));
+    if(useAppJson){ 
+       dispatch(updateTable(table));
+
+    }else{
+      fetch(`${API_URL}/tables/${table.id}`, options)
+        .then(() => dispatch(updateTable(table)));
+    }
+
   }
 }
 
